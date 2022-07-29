@@ -1,0 +1,7 @@
+.divGeral{
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px 0;
+}
