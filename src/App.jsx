@@ -8,6 +8,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [filterList, setFilter] = useState([]);
   const [currentSale, setCurrentSale] = useState([]);
+  const [search, setSearch] = useState("")
   const [cartTotal, setCartTotal] = useState(0);
 
   const base = "https://hamburgueria-kenzie-json-serve.herokuapp.com/products";
@@ -18,7 +19,11 @@ function App() {
       .get(base)
       .then((response) => setProducts(response.data))
       .catch((err) => console.log(err));
-  }, [axios]);
+  }, [axios, search]);
+
+  function pesquisa(){
+    setProducts (products.filter((item) => item.name.toLowerCase().includes(search.toLowerCase())))
+  }
 
   return (
     <div className="App">
@@ -26,14 +31,14 @@ function App() {
         <div className="divPrincipal">
           <img src={logoHeader} alt="" className="logo" />
           <div className="divInput">
-            <input type="text" name="" id="" placeholder="Digitar pesquisa" />
-            <button className="button">Pesquisar</button>
+            <input onChange={event => setSearch(event.target.value) } type="text" name="" id="" placeholder="Digitar pesquisa" />
+            <button onClick={ () => pesquisa()} className="button">Pesquisar</button>
           </div>
         </div>
       </header>
       <div className="container">
         <main>
-          <ProductsList products={products} setProducts={setProducts} filterList={filterList} setFilter={setFilter} />
+          <ProductsList products={products} setProducts={setProducts} filterList={filterList} setFilter={setFilter} currentSale={currentSale} setCurrentSale={setCurrentSale} />
         </main>
         <aside>
           <Cart currentSale={currentSale} setCurrentSale={setCurrentSale} cartTotal={cartTotal} setCartTotal={setCartTotal} />
