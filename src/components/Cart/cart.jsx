@@ -32,12 +32,12 @@ function Cart({ currentSale, setCurrentSale }) {
           0 ? (
             <div className="footerCarrinho">
               <div className="valores">
-                <p>Total</p>
+                <h6>Total</h6>
                 <p>{soma.toLocaleString('pt-BR',{style:'currency', currency:'BRL'} )}</p>
+              </div>
                 <div className="divButton">
                   <button onClick={() => setCurrentSale([])}>Remover todos</button>
                 </div>
-              </div>
             </div>
           ):
           (<></>)}

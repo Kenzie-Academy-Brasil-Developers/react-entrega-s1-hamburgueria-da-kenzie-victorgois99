@@ -8,7 +8,7 @@ function ProductsList({ products, currentSale, setCurrentSale }) {
 
   currentSale.some((elemento) => elemento.id === item.id)
 
-  ? toast.error("Produto já adicionado no carrinho")
+  ? toast.error("Produto já adicionado no carrinho!")
   : setCurrentSale([...currentSale, item])
 
   !currentSale.some((elemento) => elemento.id === item.id)  && toast.success("Produto adicionado ao carrinho!")}
